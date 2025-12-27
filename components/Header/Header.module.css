@@ -1,0 +1,122 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.inner {
+  height: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: -0.02em;
+  text-transform: lowercase;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.logo:hover {
+  color: #cfff7d;
+}
+
+.logoDot {
+  color: #cfff7d;
+  font-size: 2rem;
+}
+
+.centerNav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.link {
+  display: block;
+  line-height: 1;
+  padding: 10px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-transform: none;
+  letter-spacing: 0;
+  position: relative;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  transition: width 0.3s ease;
+}
+
+.link:hover {
+  color: #cfff7d;
+}
+
+.link:hover::after {
+  width: 60%;
+}
+
+.link[data-active] {
+  color: #cfff7d;
+}
+
+.link[data-active]::after {
+  width: 60%;
+}
+
+.ctaButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 10px 24px;
+  background: transparent;
+  border: 2px solid #cfff7d;
+  border-radius: 25px;
+  color: #cfff7d;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.ctaButton:hover {
+  background: transparent;
+  color: #cfff7d;
+}
+
+@media (max-width: 768px) {
+  .inner {
+    height: 70px;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .logoDot {
+    font-size: 1.7rem;
+  }
+}

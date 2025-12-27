@@ -1,0 +1,48 @@
+/* GT Eesti Pro Display Font - Using Inter as fallback */
+@font-face {
+  font-family: 'GT Eesti Pro Display';
+  src: local('Inter'), local('Inter-Regular');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Eesti Pro Display';
+  src: local('Inter Medium'), local('Inter-Medium');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Eesti Pro Display';
+  src: local('Inter SemiBold'), local('Inter-SemiBold');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Eesti Pro Display';
+  src: local('Inter Bold'), local('Inter-Bold');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Eesti Pro Display';
+  src: local('Inter ExtraBold'), local('Inter-ExtraBold');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'GT Eesti Pro Display';
+  src: local('Inter Black'), local('Inter-Black');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,175 @@
+.wrapper {
+  padding: 150px 0 300px 0;
+  background: #000000;
+  position: relative;
+  min-height: 100vh;
+}
+
+.titleSection {
+  margin-bottom: 100px;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.cardsContainer {
+  position: relative;
+  padding: 50px 0;
+}
+
+.cardWrapper {
+  margin-bottom: 30px;
+}
+
+.stackCard {
+  background: #cfff7d;
+  border: none;
+  min-height: 400px;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+
+.numberBadge {
+  font-size: 4rem;
+  font-weight: 900;
+  color: #000000;
+  line-height: 1;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.percentageCircle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.percentageText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #000000;
+}
+
+.cardTitle {
+  color: #000000;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.cardDescription {
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.skillTag {
+  background: #cfff7d;
+  color: #000000;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.skillTag:hover {
+  background: #e0ff9e;
+  transform: scale(1.05);
+}
+
+.languagesSection {
+  margin-top: 150px;
+  padding-top: 100px;
+}
+
+.langSectionTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.langCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.langCard:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+}
+
+.langTitle {
+  color: #fff;
+  font-weight: 700;
+}
+
+.langLevel {
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .stackCard {
+    min-height: 350px;
+  }
+
+  .cardTitle {
+    font-size: 2rem;
+  }
+
+  .numberBadge {
+    font-size: 3rem;
+  }
+
+  .cardWrapper {
+    position: relative !important;
+    top: auto !important;
+  }
+}

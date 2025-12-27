@@ -1,0 +1,158 @@
+.wrapper {
+  padding: 150px 0;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+}
+
+.rightContent {
+  flex: 1;
+  max-width: 700px;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 60px;
+  text-align: left;
+  text-transform: uppercase;
+  line-height: 0.9;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.titleHighlight {
+  color: #cfff7d;
+}
+
+.description {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.8;
+  font-size: 1.1rem;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.emailCardWrapper {
+  margin-top: 50px;
+  position: relative;
+  width: fit-content;
+}
+
+.zebraStripes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.zebraStripe {
+  flex: 1;
+  background: #cfff7d;
+}
+
+.zebraStripe:nth-child(even) {
+  background: #000000;
+}
+
+.emailCard {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(207, 255, 125, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  min-width: 320px;
+}
+
+.emailCard:hover {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: rgba(207, 255, 125, 0.5);
+  transform: translateY(-3px);
+}
+
+.infoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(207, 255, 125, 0.1);
+  color: #cfff7d;
+  flex-shrink: 0;
+}
+
+.infoLabel {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.infoValue {
+  color: #fff;
+  word-break: break-word;
+  font-weight: 500;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 600px;
+  height: 620px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0;
+}
+
+@media (max-width: 1200px) {
+  .contentWrapper {
+    flex-direction: column;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    max-width: 500px;
+    height: 600px;
+    margin: 0 auto 40px;
+  }
+
+  .rightContent {
+    max-width: 100%;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .emailCardWrapper {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

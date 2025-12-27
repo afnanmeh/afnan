@@ -1,0 +1,144 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #0a0514;
+  position: relative;
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  z-index: 10;
+  padding-top: 200px;
+  padding-bottom: 0;
+}
+
+.profileBadge {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.profileImage {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #8b5cf6, #e879f9, #fb923c);
+  padding: 2px;
+  flex-shrink: 0;
+}
+
+.profileImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.profileText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.profileTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.profileSubtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.2;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.heroTextWrapper {
+  position: relative;
+  z-index: 10;
+}
+
+.heroText {
+  font-size: clamp(9rem, 25vw, 28rem);
+  font-weight: 700;
+  line-height: 0.85;
+  margin: 0;
+  color: #cfff7d;
+  letter-spacing: -0.05em;
+  text-transform: lowercase;
+  pointer-events: none;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.descriptionWrapper {
+  position: relative;
+  z-index: 10;
+  margin-top: 3rem;
+  max-width: 900px;
+}
+
+.description {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .heroText {
+    font-size: clamp(5rem, 18vw, 10rem);
+  }
+
+  .profileBadge {
+    margin-bottom: 2rem;
+  }
+}
+
+
+.contactText {
+  font-size: clamp(8rem, 22vw, 25rem);
+  font-weight: 800;
+  line-height: 0.85;
+  background: linear-gradient(180deg, #e8ff9e 0%, #cfff7d 30%, #8fb359 70%, #5a7a2f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  text-transform: lowercase;
+  letter-spacing: -0.05em;
+  text-transform: lowercase;
+  pointer-events: none;
+  font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5)) drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4)) drop-shadow(0 -5px 20px rgba(207, 255, 125, 0.2));
+  text-shadow:
+    0 1px 0 #cfff7d,
+    0 2px 0 #a8d85d,
+    0 3px 0 #98c84d,
+    0 10px 0 #88b83d,
+    0 10px 0 #78a82d,
+    0 20px 0 #68982d,
+    0 10px 20px rgba(0, 0, 0, 0.4),
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 30px 60px rgba(0, 0, 0, 0.2);
+}
