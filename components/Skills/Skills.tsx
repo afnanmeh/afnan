@@ -157,7 +157,7 @@ export function Skills() {
                           transformOrigin: "50% 50%",
                         }}
                       />
-                    </svg>
+                    </svg> 
                   </div>
                 </div>
 
