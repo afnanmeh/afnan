@@ -114,14 +114,14 @@ export function Skills() {
             <motion.div
               key={category.number}
               className={classes.cardWrapper}
-              initial={{ opacity: 0, x: 200 }}
+              initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{
-                duration: 0.6,
+                duration: 0.3,
                 delay: 0,
-                ease: "easeOut",
+                ease: [0.25, 0.1, 0.25, 1],
               }}
-              viewport={{ once: false, amount: 0.4 }}
+              viewport={{ once: false, amount: 0.3, margin: "0px 0px -100px 0px" }}
               style={{
                 position: "sticky",
                 top: `${100 + index * 30}px`,

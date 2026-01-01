@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: any }) {
         />
         <meta
           name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+          content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
         />
       </head>
       <body>

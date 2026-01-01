@@ -5,8 +5,33 @@
   min-height: 100vh;
 }
 
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 80px 0 150px 0;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 60px 0 100px 0;
+  }
+}
+
 .titleSection {
   margin-bottom: 100px;
+}
+
+@media (max-width: 768px) {
+  .titleSection {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .titleSection {
+    margin-bottom: 40px;
+  }
 }
 
 .title {
@@ -20,6 +45,19 @@
   font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+@media (max-width: 768px) {
+  .title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+}
+
 .subtitle {
   color: rgba(255, 255, 255, 0.5);
   text-align: center;
@@ -28,21 +66,78 @@
   text-transform: none;
 }
 
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}
+
 .cardsContainer {
   position: relative;
   padding: 50px 0;
+  transform: translateZ(0);
+  perspective: 1000px;
+}
+
+@media (max-width: 768px) {
+  .cardsContainer {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardsContainer {
+    padding: 20px 15px;
+  }
 }
 
 .cardWrapper {
   margin-bottom: 30px;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  .cardWrapper {
+    margin-bottom: 20px;
+  }
 }
 
 .stackCard {
   background: #cfff7d;
   border: none;
   min-height: 400px;
-  transition: all 0.4s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.3s ease;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.stackCard:hover {
+  transform: translateY(-5px) translateZ(0);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  .stackCard {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stackCard {
+    min-height: 280px;
+  }
 }
 
 .cardHeader {
@@ -60,10 +155,46 @@
   font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+@media (max-width: 768px) {
+  .numberBadge {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .numberBadge {
+    font-size: 2.5rem;
+  }
+}
+
 .percentageCircle {
   position: relative;
   width: 80px;
   height: 80px;
+}
+
+@media (max-width: 768px) {
+  .percentageCircle {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .percentageCircle svg {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .percentageCircle {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .percentageCircle svg {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .percentageText {
@@ -86,11 +217,40 @@
   font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+@media (max-width: 768px) {
+  .cardTitle {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardTitle {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+}
+
 .cardDescription {
   color: rgba(0, 0, 0, 0.7);
   line-height: 1.8;
   font-size: 1.1rem;
   margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .cardDescription {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardDescription {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+  }
 }
 
 .skillsList {
@@ -109,6 +269,20 @@
   font-weight: 600;
   border: 1px solid rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .skillTag {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skillTag {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
 }
 
 .skillTag:hover {
@@ -156,18 +330,6 @@
 }
 
 @media (max-width: 768px) {
-  .stackCard {
-    min-height: 350px;
-  }
-
-  .cardTitle {
-    font-size: 2rem;
-  }
-
-  .numberBadge {
-    font-size: 3rem;
-  }
-
   .cardWrapper {
     position: relative !important;
     top: auto !important;

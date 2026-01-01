@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Container, Title, Text, Card, Badge, Group } from "@mantine/core";
 import { motion } from "framer-motion";
 import {
@@ -46,6 +47,19 @@ const services = [
 ];
 
 export function Experience() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 968);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <div className={classes.wrapper} id="experience">
       <Container size="xl">
@@ -110,20 +124,9 @@ export function Experience() {
         </div>
 
         <div className={classes.servicesGrid}>
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, x: -100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{
-                duration: 0.6,
-                delay: 0,
-                ease: "easeOut",
-              }}
-              viewport={{ once: false, amount: 0.9 }}
-            >
-              <Card className={classes.serviceCard} padding="xl" radius="lg">
+          {services.map((service, index) => {
+            const cardContent = (
+              <Card className={classes.serviceCard} padding="xl" radius="lg" style={isMobile ? { position: 'sticky', top: `${100 + index * 30}px` } : {}}>
                 <div className={classes.serviceIcon}>
                   <service.icon size={40} stroke={1.5} />
                 </div>
@@ -154,8 +157,29 @@ export function Experience() {
                   </svg>
                 </div>
               </Card>
-            </motion.div>
-          ))}
+            );
+
+            return isMobile ? (
+              <div key={service.title} className={classes.cardWrapper}>
+                {cardContent}
+              </div>
+            ) : (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, x: -100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -100 }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0,
+                  ease: "easeOut",
+                }}
+                viewport={{ once: false, amount: 0.9 }}
+              >
+                {cardContent}
+              </motion.div>
+            );
+          })}
         </div>
 
         <motion.div

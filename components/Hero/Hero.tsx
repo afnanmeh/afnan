@@ -37,7 +37,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
-          <h1 className={classes.contactText}>Afnan.</h1>
+          <h1 className={classes.heroText}>Afnan.</h1>
         </motion.div>
 
         <motion.div
@@ -47,7 +47,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.7 }}
         >
           <p className={classes.description}>
-            Frontend engineering with React and Next.js. Scalable architecture,
+            Frontend engineering with React and Next.js. Scalable archNitecture,
             clean UI, high performance MODERN WEB DESIGN, STYLISH VISUALS, AND
             PRECISE TIMELINES. I CREATE PROJECTS built for real users and real
             growth.

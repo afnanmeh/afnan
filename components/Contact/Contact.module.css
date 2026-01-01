@@ -4,8 +4,33 @@
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 80px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 60px 0;
+  }
+}
+
 .header {
   margin-bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  .header {
+    margin-bottom: 50px;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    margin-bottom: 40px;
+  }
 }
 
 .title {
@@ -19,6 +44,20 @@
   font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+@media (max-width: 768px) {
+  .title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: clamp(2rem, 12vw, 3rem);
+    margin-bottom: 15px;
+  }
+}
+
 .titleHighlight {
   color: #cfff7d;
 }
@@ -30,6 +69,18 @@
   font-weight: 400;
 }
 
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}
+
 .content {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -37,17 +88,40 @@
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .content {
+    padding: 0 20px;
+  }
+}
+
 .mainContact {
   display: flex;
   flex-direction: column;
-
   gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .mainContact {
+    gap: 20px;
+  }
 }
 
 .contactGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 50px;
+}
+
+@media (max-width: 768px) {
+  .contactGrid {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactGrid {
+    gap: 15px;
+  }
 }
 
 .card {
@@ -104,11 +178,29 @@
   margin-bottom: 5px;
 }
 
+@media (max-width: 480px) {
+  .cardTitle {
+    font-size: 0.65rem;
+  }
+}
+
 .cardValue {
   color: #fff;
   word-break: break-word;
   font-weight: 600;
   font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .cardValue {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardValue {
+    font-size: 0.9rem;
+  }
 }
 
 .cardArrow {
@@ -155,10 +247,35 @@
   font-size: 1rem;
 }
 
+@media (max-width: 768px) {
+  .addressTitle {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .addressTitle {
+    font-size: 0.9rem;
+  }
+}
+
 .addressText {
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.8;
   font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .addressText {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .addressText {
+    font-size: 0.85rem;
+  }
 }
 
 .socialSection {
@@ -184,11 +301,36 @@
   font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+@media (max-width: 768px) {
+  .socialTitle {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialTitle {
+    font-size: 1.2rem;
+  }
+}
+
 .socialSubtitle {
   color: rgba(0, 0, 0, 0.7);
   font-size: 0.9rem;
   margin-bottom: 30px;
   line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .socialSubtitle {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialSubtitle {
+    font-size: 0.8rem;
+  }
 }
 
 .socialLinks {
@@ -233,9 +375,17 @@
     position: relative;
     top: auto;
   }
+}
 
-  .title {
-    font-size: clamp(2rem, 8vw, 4rem);
+@media (max-width: 768px) {
+  .content {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    gap: 20px;
   }
 }
 
@@ -253,6 +403,21 @@
   border-radius: 25px;
   transition: all 0.3s ease;
   margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .ctaButton {
+    font-size: 0.95rem;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaButton {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
 }
 
 .ctaButton:hover {

@@ -38,17 +38,22 @@ export function NebulaHero() {
     const colors = [
       "#8b5cf6",
       "#a855f7",
-      "#c084fc",
       "#e879f9",
       "#f472b6",
       "#fb923c",
       "#fbbf24",
+      "#CFFF7D"
     ];
 
     const particles: Particle[] = [];
     const globeRadius = Math.min(canvas.width, canvas.height) * 0.45;
 
-    for (let i = 0; i < 3500; i++) {
+    const isMobile = window.innerWidth <= 768;
+    const particleCount1 = isMobile ? 1500 : 3500;
+    const particleCount2 = isMobile ? 500 : 1200;
+    const particleCount3 = isMobile ? 2000 : 5000;
+
+    for (let i = 0; i < particleCount1; i++) {
       const r = globeRadius * Math.pow(Math.random(), 2.5);
 
       const theta = Math.random() * Math.PI * 2;
@@ -70,7 +75,7 @@ export function NebulaHero() {
       });
     }
 
-    for (let i = 0; i < 1200; i++) {
+    for (let i = 0; i < particleCount2; i++) {
       const r = globeRadius * (0.5 + Math.random() * 0.4);
 
       const theta = Math.random() * Math.PI * 2;
@@ -92,7 +97,7 @@ export function NebulaHero() {
       });
     }
 
-    for (let i = 0; i < 5000; i++) {
+    for (let i = 0; i < particleCount3; i++) {
       const r = globeRadius * (0.9 + Math.random() * 0.1);
 
       const theta = Math.random() * Math.PI * 2;

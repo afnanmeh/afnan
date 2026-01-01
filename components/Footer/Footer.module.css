@@ -6,6 +6,18 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .footer {
+    padding: 60px 0 40px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 50px 0 30px 0;
+  }
+}
+
 .footerContent {
   position: relative;
 }
@@ -60,6 +72,20 @@
   gap: 30px;
 }
 
+@media (max-width: 768px) {
+  .topSection {
+    margin-bottom: 50px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topSection {
+    margin-bottom: 40px;
+    gap: 15px;
+  }
+}
+
 /* .logo {
   color: #fff;
   font-weight: 900;
@@ -73,6 +99,18 @@
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .socialLinks {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialLinks {
+    gap: 12px;
+  }
 }
 
 .socialLink {
@@ -89,6 +127,20 @@
   border-radius: 20px;
 }
 
+@media (max-width: 768px) {
+  .socialLink {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .socialLink {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
+
 .socialLink:hover {
   color: #cfff7d;
   border-color: rgba(207, 255, 125, 0.3);
@@ -98,6 +150,19 @@
   max-width: 900px;
   margin: 0 auto 80px auto;
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .ctaSection {
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaSection {
+    margin: 0 auto 40px auto;
+  }
 }
 
 .ctaHeading {
@@ -119,6 +184,23 @@
   text-align: center;
   font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .ctaHeading {
+    font-size: clamp(1rem, 4vw, 1.8rem);
+    padding: 20px;
+    margin-bottom: 150px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .ctaHeading {
+    font-size: clamp(0.9rem, 4.5vw, 1.5rem);
+    padding: 15px;
+    margin-bottom: 100px;
+  }
 }
 
 .ctaButton {
@@ -151,9 +233,35 @@
   gap: 30px;
 }
 
+@media (max-width: 768px) {
+  .bottomSection {
+    padding-top: 30px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottomSection {
+    padding-top: 20px;
+    gap: 15px;
+  }
+}
+
 .bottomLinks {
   display: flex;
   gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .bottomLinks {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottomLinks {
+    gap: 12px;
+  }
 }
 
 .bottomInfo {
@@ -161,6 +269,18 @@
   gap: 30px;
   align-items: center;
   flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .bottomInfo {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottomInfo {
+    gap: 12px;
+  }
 }
 
 .bottomLink {
@@ -171,6 +291,18 @@
   transition: color 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .bottomLink {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .bottomLink {
+    font-size: 0.8rem;
+  }
+}
+
 .bottomLink:hover {
   color: #cfff7d;
 }
@@ -179,6 +311,18 @@
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.9rem;
   font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .copyright {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .copyright {
+    font-size: 0.8rem;
+  }
 }
 
 .location {
@@ -201,6 +345,20 @@
   transition: all 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .writeMe {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .writeMe {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}
+
 .writeMe:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(207, 255, 125, 0.4);
@@ -216,10 +374,6 @@
   .socialLinks {
     width: 100%;
     justify-content: flex-start;
-  }
-
-  .ctaHeading {
-    font-size: 1.5rem;
   }
 
   .bottomSection {
@@ -238,6 +392,12 @@
   }
 }
 
+@media (max-width: 480px) {
+  .contactText {
+    font-size: clamp(3rem, 12vw, 7rem);
+  }
+}
+
 .logo {
   font-size: 1.8rem;
   font-weight: 900;
@@ -249,6 +409,18 @@
   font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+}
+
 .logo:hover {
   color: #cfff7d;
 }
@@ -256,4 +428,16 @@
 .logoDot {
   color: #cfff7d;
   font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+  .logoDot {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoDot {
+    font-size: 1.5rem;
+  }
 }
