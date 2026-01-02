@@ -73,21 +73,15 @@ export function Skills() {
         >
           <h2 className={classes.title}>
             SKILLS{" "}
-            <motion.span
+            <span
               style={{
                 color: "#F0196D",
                 display: "inline-block",
                 fontSize: "clamp(4rem, 8vw, 9rem)",
               }}
-              animate={{ rotate: [0, 10, -10, 0] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
             >
               &
-            </motion.span>{" "}
+            </span>{" "}
             EXPERTISE
           </h2>{" "}
           <Text className={classes.subtitle} size="xl">
@@ -108,9 +102,8 @@ export function Skills() {
                 ease: [0.25, 0.1, 0.25, 1],
               }}
               viewport={{
-                once: false,
-                amount: 0.3,
-                margin: "0px 0px -80px 0px",
+                once: true,
+                amount: 0.2,
               }}
               style={{
                 position: "sticky",
@@ -164,9 +157,10 @@ export function Skills() {
                     <motion.div
                       key={skill}
                       className={classes.skillTag}
-                      initial={{ opacity: 0, scale: 0.8 }}
+                      initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: skillIndex * 0.1 }}
+                      transition={{ duration: 0.2, delay: skillIndex * 0.05 }}
+                      viewport={{ once: true }}
                     >
                       {skill}
                     </motion.div>

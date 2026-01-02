@@ -21,7 +21,10 @@ export function NebulaHero() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", {
+      alpha: false,
+      desynchronized: true,
+    });
     if (!ctx) return;
 
     const resizeCanvas = () => {
@@ -49,9 +52,9 @@ export function NebulaHero() {
     const globeRadius = Math.min(canvas.width, canvas.height) * 0.45;
 
     const isMobile = window.innerWidth <= 768;
-    const particleCount1 = isMobile ? 1500 : 3500;
-    const particleCount2 = isMobile ? 500 : 1200;
-    const particleCount3 = isMobile ? 2000 : 5000;
+    const particleCount1 = isMobile ? 600 : 1400;
+    const particleCount2 = isMobile ? 200 : 500;
+    const particleCount3 = isMobile ? 800 : 2500;
 
     for (let i = 0; i < particleCount1; i++) {
       const r = globeRadius * Math.pow(Math.random(), 2.5);

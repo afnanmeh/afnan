@@ -10,6 +10,8 @@ import { Skills } from "@/components/Skills/Skills";
 import { Contact } from "@/components/Contact/Contact";
 import { Footer } from "@/components/Footer/Footer";
 import { Loading } from "@/components/Loading";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { PerformanceWrapper } from "@/components/PerformanceWrapper";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -84,15 +86,17 @@ export default function HomePage() {
     <div style={{ backgroundColor: "#000000", minHeight: "100vh" }}>
       {isLoading && <Loading onLoadingComplete={handleLoadingComplete} />}
       {showContent && (
-        <>
-          <Header />
-          <Hero />
-          <About />
-          <Experience />
-          <Skills />
-          <Contact />
-          <Footer />
-        </>
+        <PerformanceWrapper>
+          <SmoothScroll>
+            <Header />
+            <Hero />
+            <About />
+            <Experience />
+            <Skills />
+            <Contact />
+            <Footer />
+          </SmoothScroll>
+        </PerformanceWrapper>
       )}
     </div>
   );

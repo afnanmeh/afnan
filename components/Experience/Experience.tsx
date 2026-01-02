@@ -76,12 +76,9 @@ export function Experience() {
                   scale: 1,
                 }}
                 transition={{
-                  duration: 0.6,
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 10,
-                  mass: 0.8,
+                  duration: 0.3,
+                  delay: index * 0.05,
+                  ease: [0.25, 0.1, 0.25, 1],
                 }}
                 style={{
                   display: "inline-block",
@@ -166,15 +163,13 @@ export function Experience() {
             ) : (
               <motion.div
                 key={service.title}
-                initial={{ opacity: 0, x: -100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.6,
-                  delay: 0,
-                  ease: "easeOut",
+                  duration: 0.3,
+                  ease: [0.25, 0.1, 0.25, 1],
                 }}
-                viewport={{ once: false, amount: 0.9 }}
+                viewport={{ once: true, amount: 0.5 }}
               >
                 {cardContent}
               </motion.div>
@@ -189,7 +184,7 @@ export function Experience() {
           transition={{ duration: 1 }}
           viewport={{ once: false }}
         >
-          {Array.from({ length: 400 }).map((_, index) => {
+          {Array.from({ length: 100 }).map((_, index) => {
             const randomLeft = Math.random() * 100;
             const randomDelay = Math.random() * 3;
             const randomDuration = 4 + Math.random() * 3;
