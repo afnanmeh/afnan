@@ -13,9 +13,9 @@ export function Hero() {
       <Container size="xl" className={classes.inner}>
         <motion.div
           className={classes.profileBadge}
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -15 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <div className={classes.profileImage}>
             <Image
@@ -33,18 +33,22 @@ export function Hero() {
 
         <motion.div
           className={classes.heroTextWrapper}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{
+            duration: 0.3,
+            delay: 0.05,
+            ease: [0.25, 0.1, 0.25, 1],
+          }}
         >
           <h1 className={classes.heroText}>Afnan.</h1>
         </motion.div>
 
         <motion.div
           className={classes.descriptionWrapper}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
+          transition={{ duration: 0.3, delay: 0.1, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <p className={classes.description}>
             Frontend engineering with React and Next.js. Scalable archNitecture,

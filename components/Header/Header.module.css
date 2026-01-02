@@ -3,10 +3,14 @@
   top: 0;
   left: 0;
   right: 0;
+  width: 100%;
+  max-width: 100vw;
   z-index: 1000;
   transition: all 0.3s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   font-family: 'GT Eesti Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .inner {
@@ -14,6 +18,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -107,9 +114,17 @@
   color: #cfff7d;
 }
 
+.burger {
+  max-width: 32px;
+  max-height: 32px;
+}
+
 @media (max-width: 768px) {
   .inner {
     height: 70px;
+    padding: 0 1rem;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .logo {
@@ -118,5 +133,41 @@
 
   .logoDot {
     font-size: 1.7rem;
+  }
+
+  .link {
+    font-size: 1.1rem;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .burger {
+    max-width: 28px;
+    max-height: 28px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .inner {
+    height: 60px;
+    padding: 0 0.75rem 0 1rem;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .logoDot {
+    font-size: 1.5rem;
+  }
+
+  .burger {
+    max-width: 24px;
+    max-height: 24px;
+    flex-shrink: 0;
   }
 }

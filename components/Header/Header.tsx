@@ -95,6 +95,7 @@ export function Header() {
           hiddenFrom="xs"
           size="sm"
           color="#fff"
+          className={classes.burger}
         />
       </Container>
 
@@ -102,17 +103,37 @@ export function Header() {
         opened={opened}
         onClose={close}
         size="100%"
-        padding="md"
+        padding="xl"
         title="Navigation"
         hiddenFrom="xs"
         zIndex={1000000}
         styles={{
           content: { backgroundColor: "#0a0a0a" },
-          header: { backgroundColor: "#0a0a0a", color: "#fff" },
+          header: {
+            backgroundColor: "#0a0a0a",
+            color: "#fff",
+            padding: "1.5rem",
+          },
           title: { color: "#fff", fontSize: "1.5rem", fontWeight: 700 },
+          body: { padding: "1.5rem" },
         }}
       >
-        <Stack gap="md">{items}</Stack>
+        <Stack gap="lg">
+          {items}
+          <motion.a
+            href="#contact"
+            className={classes.ctaButton}
+            onClick={close}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              marginTop: "2rem",
+              width: "100%",
+              justifyContent: "center",
+            }}
+          >
+            Let's Talk
+          </motion.a>
+        </Stack>
       </Drawer>
     </motion.header>
   );

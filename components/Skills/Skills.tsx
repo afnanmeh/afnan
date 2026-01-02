@@ -1,22 +1,8 @@
 "use client";
 
-import { Container, Title, Text, SimpleGrid, Card } from "@mantine/core";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { Card, Container, Text, Title } from "@mantine/core";
+import { motion } from "framer-motion";
 import { useRef } from "react";
-import {
-  IconBrandReact,
-  IconBrandNextjs,
-  IconBrandJavascript,
-  IconBrandTypescript,
-  IconBrandVue,
-  IconBrandPython,
-  IconBrandDocker,
-  IconBrandGit,
-  IconDatabase,
-  IconCode,
-  IconPalette,
-  IconApi,
-} from "@tabler/icons-react";
 import classes from "./Skills.module.css";
 
 const skillCategories = [
@@ -79,10 +65,10 @@ export function Skills() {
     <div className={classes.wrapper} id="skills" ref={containerRef}>
       <Container size="xl">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
           className={classes.titleSection}
         >
           <h2 className={classes.title}>
@@ -91,7 +77,7 @@ export function Skills() {
               style={{
                 color: "#F0196D",
                 display: "inline-block",
-                fontSize: "9rem",
+                fontSize: "clamp(4rem, 8vw, 9rem)",
               }}
               animate={{ rotate: [0, 10, -10, 0] }}
               transition={{
@@ -114,14 +100,18 @@ export function Skills() {
             <motion.div
               key={category.number}
               className={classes.cardWrapper}
-              initial={{ opacity: 0, x: 100 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{
-                duration: 0.3,
+                duration: 0.25,
                 delay: 0,
                 ease: [0.25, 0.1, 0.25, 1],
               }}
-              viewport={{ once: false, amount: 0.3, margin: "0px 0px -100px 0px" }}
+              viewport={{
+                once: false,
+                amount: 0.3,
+                margin: "0px 0px -80px 0px",
+              }}
               style={{
                 position: "sticky",
                 top: `${100 + index * 30}px`,
@@ -157,7 +147,7 @@ export function Skills() {
                           transformOrigin: "50% 50%",
                         }}
                       />
-                    </svg> 
+                    </svg>
                   </div>
                 </div>
 

@@ -22,10 +22,10 @@ export function Footer() {
           <div className={classes.backgroundText}>
             <motion.div
               className={classes.contactText}
-              initial={{ opacity: 0, y: 100 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+              viewport={{ margin: "-100px" }}
             >
               @afnan
             </motion.div>
@@ -36,9 +36,9 @@ export function Footer() {
             {/* Top section with logo and social links */}
             <div className={classes.topSection}>
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -15 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
+                transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
               >
                 <a href="#home" className={classes.logo}>
                   afnan<span className={classes.logoDot}>.</span>
@@ -47,10 +47,10 @@ export function Footer() {
 
               <motion.div
                 className={classes.socialLinks}
-                initial={{ opacity: 0, x: 50 }}
+                initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                viewport={{ margin: "-50px" }}
               >
                 {socialLinks.map((link, index) => (
                   <motion.a
@@ -59,11 +59,10 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={classes.socialLink}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 5 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    whileHover={{ y: -5 }}
+                    transition={{ duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+                    whileHover={{ y: -3, transition: { duration: 0.1 } }}
                   >
                     {link.name}
                     <IconArrowUpRight size={16} stroke={2} />
@@ -75,17 +74,17 @@ export function Footer() {
             {/* CTA Section */}
             <motion.div
               className={classes.ctaSection}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+              viewport={{ margin: "-100px" }}
             >
               <motion.h2
                 className={classes.ctaHeading}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                viewport={{ margin: "-50px" }}
               >
                 GOT ANY QUESTIONS OR IDEAS ABOUT CREATING A WEBSITE? WRITE TO ME
                 AND I WILL HELP YOU IMPLEMENT YOUR PROJECT.
@@ -98,8 +97,8 @@ export function Footer() {
                 className={classes.bottomLinks}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                viewport={{ margin: "-50px" }}
               >
                 <a
                   href="https://github.com/D4-afnan"
@@ -152,8 +151,8 @@ export function Footer() {
                 className={classes.bottomInfo}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                viewport={{ margin: "-50px" }}
               >
                 <Text className={classes.copyright}>
                   © {currentYear} Afnan Mehmood
@@ -168,9 +167,9 @@ export function Footer() {
                 className={classes.writeMe}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+                viewport={{ margin: "-50px" }}
+                whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
               >
                 <IconArrowUpRight size={16} stroke={2} />
                 Write me

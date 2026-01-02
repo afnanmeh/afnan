@@ -40,9 +40,10 @@ export function Contact() {
       <Container size="xl">
         <motion.div
           className={classes.header}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: true, margin: "-100px" }}
         >
           <h2 className={classes.title}>
             LET'S <span className={classes.titleHighlight}>CONNECT</span>
@@ -54,16 +55,16 @@ export function Contact() {
 
         <motion.div
           className={classes.ctaActions}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           <motion.a
             href="mailto:d4afnan@gmail.com"
             className={classes.ctaButton}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05, transition: { duration: 0.1 } }}
+            whileTap={{ scale: 0.95, transition: { duration: 0.05 } }}
           >
             <IconArrowUpRight size={20} stroke={2} />
             Discuss the project
@@ -73,17 +74,19 @@ export function Contact() {
         <div className={classes.content}>
           <motion.div
             className={classes.mainContact}
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             <div className={classes.contactGrid}>
               {contactInfo.map((item, index) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  transition={{ duration: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+                  viewport={{ once: true }}
                 >
                   <Card
                     className={classes.card}
@@ -113,9 +116,10 @@ export function Contact() {
 
             <motion.div
               className={classes.addressSection}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+              viewport={{ once: true, margin: "-50px" }}
             >
               <Card className={classes.addressCard} padding="xl" radius="lg">
                 <div className={classes.addressHeader}>
@@ -133,9 +137,10 @@ export function Contact() {
 
           <motion.div
             className={classes.socialSection}
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            viewport={{ once: true, margin: "-50px" }}
           >
             <Card className={classes.socialCard} padding="xl" radius="lg">
               <Text className={classes.socialTitle}>Follow Me</Text>
@@ -148,8 +153,12 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialLink}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -3,
+                    transition: { duration: 0.1 },
+                  }}
+                  whileTap={{ scale: 0.95, transition: { duration: 0.05 } }}
                 >
                   <IconBrandGithub size={24} stroke={2} />
                   <span>GitHub</span>
@@ -159,8 +168,12 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={classes.socialLink}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{
+                    scale: 1.05,
+                    y: -3,
+                    transition: { duration: 0.1 },
+                  }}
+                  whileTap={{ scale: 0.95, transition: { duration: 0.05 } }}
                 >
                   <IconBrandLinkedin size={24} stroke={2} />
                   <span>LinkedIn</span>

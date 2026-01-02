@@ -13,10 +13,10 @@ export function About() {
         <div className={classes.contentWrapper}>
           <div className={classes.imageWrapper}>
             <motion.div
-              initial={{ opacity: 0, x: -100 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+              viewport={{ once: true, margin: "-80px" }}
             >
               <Image
                 src="/afnan-profilee.png"
@@ -31,10 +31,10 @@ export function About() {
 
           <div className={classes.rightContent}>
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+              viewport={{ once: true, margin: "-80px" }}
             >
               <h2 className={classes.title}>
                 ABOUT <span className={classes.titleHighlight}>ME</span>
@@ -42,10 +42,10 @@ export function About() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+              viewport={{ once: true, margin: "-60px" }}
             >
               <Text className={classes.description} size="lg">
                 As a passionate Frontend Engineer, I've been building
