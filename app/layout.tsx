@@ -1,39 +1,46 @@
-import "@mantine/core/styles.css";
 import "./globals.css";
-import React from "react";
-import { MantineProvider, ColorSchemeScript } from "@mantine/core";
-import { theme } from "./theme";
+import type { Metadata, Viewport } from "next";
 
-export const metadata = {
-  title: "Afnan Mehmood - Software Developer",
+export const metadata: Metadata = {
+  title: "Afnan Mehmood | Frontend Engineer & Designer",
   description:
-    "Portfolio of Afnan Mehmood, a skilled Software Developer proficient in ReactJS, Next.js, JavaScript, TypeScript, and Vue.js",
+    "Code, craft, and a little curiosity. Afnan Mehmood builds thoughtful digital experiences with React, Next.js, Vue, and TypeScript. Frontend engineering, UI/UX, and design.",
+  icons: { icon: "/favicon.svg" },
+  openGraph: {
+    title: "Afnan Mehmood | From code to experience",
+    description:
+      "Frontend Engineer + UI/UX Engineer + Designer. Based in Pakistan.",
+  },
 };
-
-export default function RootLayout({ children }: { children: any }) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ead4e1",
+};
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <head>
-        <ColorSchemeScript />
-        <link rel="shortcut icon" href="/favicon.svg" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
+          rel="preload"
+          href="/fonts/story-serif.woff2"
+          as="font"
+          type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
+          rel="preload"
+          href="/fonts/story-sans.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
       </head>
-      <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

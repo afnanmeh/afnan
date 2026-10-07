@@ -1,9 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  experimental: {
-    optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
-  },
-}
+const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 
-module.exports = nextConfig
+/** Keep the running development preview separate from production build files. */
+module.exports = (phase) => ({
+  reactStrictMode: true,
+  distDir: phase === PHASE_DEVELOPMENT_SERVER ? '.next' : '.next-production',
+});
