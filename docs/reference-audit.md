@@ -115,3 +115,9 @@ The eye outline is about 13% narrower and 27% taller, with a larger circular iri
 ## Eye highlight refinement
 
 Removed all lower lashes while retaining the six tapered upper lashes. Neutral studio-panel, strip and rim reflections are stronger for the eye pose, with a smooth shape-dependent shader weight so the shine appears continuously during the morph. Glass tint, opacity and other chapter materials remain unchanged.
+
+## Vercel tracing crash
+
+Reproduced the reported Maximum call stack size exceeded failure on Next.js 14.0.4 using NOW_BUILDER=1 VERCEL=1 CI=1 npm run build. Next.js's dependency-parent ignore traversal did not guard against cycles; the upstream correction is https://github.com/vercel/next.js/pull/60740. Updated and pinned next and eslint-config-next to 14.2.35, with the locked dependency graph represented in package-lock.json. No tracing bypass, Sharp downgrade or node_modules patch was introduced.
+
+The same Vercel-mode production build now succeeds, including lint, type validation, static generation and build traces. Production browser checks at 390px and 1440px pass for layered morph animation, all practice dialogs, reduced-motion support and no horizontal overflow or browser errors.

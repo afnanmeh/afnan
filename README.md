@@ -51,3 +51,15 @@ Loader bars are flat, light purple DOM shapes with fully rounded tops and no Web
 Section 04 is a pinned horizontal narrative: vertical scrolling moves the track from right to left. Reduced motion uses a native horizontal strip without pinning. Page overflow is clipped on the horizontal axis; the work strip hides its scrollbar. Dark-scene compositing keeps the entire ribbon visible over opaque black, with a soft studio fill. Practice panels and contact details use translucent glass surfaces, blur and fine borders.
 
 Section 04 uses a large glass eye formed from one continuous ribbon and three original, detailed interface studies built in SVG and CSS: SaaS products and websites, an AI assistant, and a creative website. `WorkStudy.tsx` owns these compositions. `WorkMorph.tsx` translates the layered SVG curtain in the [GSAP dynamic morphing demo](https://demos.gsap.com/demo/dynamic-morphing/) into a scroll-triggered reveal, with responsive point counts and reduced-motion support. The foreground ribbon renders behind the loader from its first frame, so entry reveals the existing scene without a canvas reparenting delay.
+
+## Vercel build tracing
+
+Next.js and eslint-config-next are pinned together at 14.2.35. Next.js 14.0.4 can recurse through cyclic dependency parents during Vercel's build-trace filtering; the upstream fix is https://github.com/vercel/next.js/pull/60740. Tracing stays enabled and Sharp remains installed for image optimization.
+
+To check the Vercel-specific build path locally:
+
+```sh
+NOW_BUILDER=1 VERCEL=1 CI=1 npm run build
+```
+
+After updating dependencies, redeploy with the updated package-lock.json.
