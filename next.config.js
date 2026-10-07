@@ -1,7 +1,14 @@
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants');
 
-/** Keep the running development preview separate from production build files. */
+/**
+ * Keep local production builds out of the running dev server's `.next`.
+ * On Vercel the build must use the default `.next`, which is where the
+ * deployment step looks for the output.
+ */
 module.exports = (phase) => ({
   reactStrictMode: true,
-  distDir: phase === PHASE_DEVELOPMENT_SERVER ? '.next' : '.next-production',
+  distDir:
+    process.env.VERCEL || phase === PHASE_DEVELOPMENT_SERVER
+      ? '.next'
+      : '.next-production',
 });
