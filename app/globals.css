@@ -274,8 +274,30 @@ button {
 .hero h1 i {
   font-size: 1.16em;
 }
+.hero-portrait {
+  position: absolute;
+  bottom: 16%;
+  left: 68%;
+  z-index: 1;
+  height: min(64svh, 600px);
+  aspect-ratio: 1000 / 1241;
+  transform: translateX(-50%);
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 84%, transparent 100%);
+}
+.hero-portrait img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+  transform: none;
+  clip-path: none;
+}
 .hero-title {
   position: absolute;
+  z-index: 2;
   bottom: 15%;
   left: 2.6%;
   width: 94.8%;
@@ -292,6 +314,7 @@ button {
 }
 .hero-caption {
   position: absolute;
+  z-index: 3;
   left: calc(var(--edge) + 2vw);
   right: var(--edge);
   bottom: 11%;
@@ -590,16 +613,19 @@ button {
   width: 320px;
   flex-shrink: 0;
 }
+.portrait-photo {
+  overflow: hidden;
+  border-radius: 160px 160px 10px 10px;
+  background: #c7c0dc;
+}
 .portrait img {
   display: block;
   width: 100%;
   height: 380px;
   object-fit: cover;
   object-position: 50% 25%;
-  filter: grayscale(1);
-  border-radius: 160px 160px 10px 10px;
-  background: #c7c0dc;
-  mix-blend-mode: multiply;
+  transform: scale(1.08);
+  transform-origin: 50% 30%;
 }
 .portrait > span {
   display: flex;
@@ -827,6 +853,39 @@ button {
   color: #e2ccff;
   mix-blend-mode: normal;
 }
+.cursor-lens {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 80;
+  width: 160px;
+  height: 160px;
+  margin: -80px 0 0 -80px;
+  border-radius: 50%;
+  border: 1px solid rgb(255 255 255 / 50%);
+  box-shadow: 0 0 0 1px rgb(107 84 150 / 12%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.cursor-lens[data-visible="true"] {
+  opacity: 1;
+}
+.cursor-lens-definitions {
+  position: fixed;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.portfolio[data-entered="false"] .cursor-lens {
+  visibility: hidden;
+}
+@media (max-width: 767px), (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+  .cursor-lens {
+    display: none;
+  }
+}
 .loader {
   position: fixed;
   inset: 0;
@@ -1005,6 +1064,11 @@ dialog .glass {
   }
 }
 @media (max-width: 1100px) {
+  .hero-portrait {
+    left: 76%;
+    bottom: 20%;
+    height: min(52svh, 480px);
+  }
   .site-header {
     gap: 14px;
   }
@@ -1087,6 +1151,11 @@ dialog .glass {
   .hero-prelude {
     top: 18%;
     left: var(--edge);
+  }
+  .hero-portrait {
+    left: 62%;
+    bottom: 24%;
+    height: min(34svh, 310px);
   }
   .hero .eyebrow {
     font-size: 8px;

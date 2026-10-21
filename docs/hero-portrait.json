@@ -1,0 +1,9 @@
+{
+  "source": "public/afnan-dp.jpg",
+  "asset": "public/afnan-hero-cutout.webp",
+  "mode": "built-in imagegen",
+  "use_case": "background-extraction",
+  "prompt": "Use case: background-extraction. Asset type: transparent portrait cutout for an existing portfolio hero. Edit target: the provided photograph of Afnan. Remove ONLY the outdoor background, replacing every background pixel with actual transparent alpha. Preserve the person exactly: identical face, hair, beard, skin tone, expression, pose, gray sweater, pants, body shape, lighting, and natural photographic colors. Do not regenerate or beautify the face or retouch the person. Crop the existing photograph to an upper-body portrait, from just above the hair to the waist, keeping both shoulders and arms visible. Clean natural hair and clothing edges. No extra objects, no text, no shadows, no background, no stylistic effects.",
+  "encoding": "WebP, 1000 pixels wide, quality 90, original alpha preserved",
+  "original_photo_retained": true
+}

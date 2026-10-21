@@ -11,6 +11,7 @@ import { themes } from "./Themes";
 import { DetailedInterface } from "./DetailedInterface";
 import { WorkStudy } from "./WorkStudy";
 import { WorkMorph } from "./WorkMorph";
+import { CursorMagnifier } from "./CursorMagnifier";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 const links = [
@@ -242,7 +243,7 @@ export function Portfolio() {
             quick ? ">" : "-=.1",
           )
           .from(
-            ".hero-prelude > *, .hero-title, .hero-caption, .hero-bottom",
+            ".hero-prelude > *, .hero-portrait img, .hero-title, .hero-caption, .hero-bottom",
             {
               opacity: 0,
               y: quick ? 0 : 35,
@@ -402,22 +403,29 @@ export function Portfolio() {
         },
       );
       const cursor = root.current?.querySelector(".cursor") as HTMLElement;
+      const lens = root.current?.querySelector(".cursor-lens") as HTMLElement;
       const moveX = gsap.quickTo(cursor, "x", {
           duration: 0.35,
           ease: "power3",
         }),
         moveY = gsap.quickTo(cursor, "y", { duration: 0.35, ease: "power3" });
+      const lensX = gsap.quickTo(lens, "x", { duration: 0.35, ease: "power3" });
+      const lensY = gsap.quickTo(lens, "y", { duration: 0.35, ease: "power3" });
       const mouse = (e: PointerEvent) => {
         if (e.pointerType !== "mouse") return;
         moveX(e.clientX);
         moveY(e.clientY);
+        lensX(e.clientX);
+        lensY(e.clientY);
         cursor.dataset.visible = "true";
+        lens.dataset.visible = "true";
         cursor.dataset.hover = String(
           !!(e.target as HTMLElement).closest("a,button"),
         );
       };
       const leave = () => {
         cursor.dataset.visible = "false";
+        lens.dataset.visible = "false";
       };
       window.addEventListener("pointermove", mouse, { passive: true });
       document.addEventListener("pointerleave", leave);
@@ -426,6 +434,7 @@ export function Portfolio() {
         window.removeEventListener("pointermove", mouse);
         document.removeEventListener("pointerleave", leave);
         gsap.killTweensOf(cursor);
+        gsap.killTweensOf(lens);
       };
     },
     { scope: root },
@@ -623,6 +632,17 @@ export function Portfolio() {
                 to something you <i>feel.</i>
               </h1>
             </div>
+            <div className="hero-portrait">
+              <Image
+                key="/afnan-hero-cutout.webp"
+                src="/afnan-hero-cutout.webp"
+                alt="Afnan Mehmood"
+                width={1000}
+                height={1241}
+                sizes="(max-width: 767px) 250px, (max-width: 1100px) 390px, 485px"
+                priority
+              />
+            </div>
             <div className="hero-title" aria-hidden="true">
               experiences
             </div>
@@ -803,13 +823,15 @@ export function Portfolio() {
             </h2>
             <div className="about-content">
               <div className="portrait reveal">
-                <Image
-                  src="/afnan-dp.jpg"
-                  alt="Afnan Mehmood"
-                  width={3024}
-                  height={3751}
-                  sizes="(max-width: 767px) 230px, 320px"
-                />
+                <div className="portrait-photo">
+                  <Image
+                    src="/afnan-dp.jpg"
+                    alt="Afnan Mehmood"
+                    width={3024}
+                    height={3751}
+                    sizes="(max-width: 767px) 230px, 320px"
+                  />
+                </div>
                 <span>
                   Afnan Mehmood <Star />
                 </span>
@@ -953,6 +975,7 @@ export function Portfolio() {
         <Star />
         <span>Reimagine the feeling</span>
       </button>
+      <CursorMagnifier />
       <div className="cursor" aria-hidden="true">
         <Star />
       </div>
