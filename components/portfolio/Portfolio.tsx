@@ -243,7 +243,7 @@ export function Portfolio() {
             quick ? ">" : "-=.1",
           )
           .from(
-            ".hero-prelude > *, .hero-portrait img, .hero-title, .hero-caption, .hero-bottom",
+            ".hero-prelude > *, .hero-title, .hero-caption, .hero-bottom",
             {
               opacity: 0,
               y: quick ? 0 : 35,
@@ -634,9 +634,8 @@ export function Portfolio() {
             </div>
             <div className="hero-portrait">
               <Image
-                key="/afnan-hero-cutout.webp"
-                src="/afnan-hero-cutout.webp"
-                alt="Afnan Mehmood"
+                src="/afnan-avatar-v2.webp"
+                alt="Afnan Mehmood’s avatar"
                 width={1000}
                 height={1241}
                 sizes="(max-width: 767px) 250px, (max-width: 1100px) 390px, 485px"
@@ -825,10 +824,10 @@ export function Portfolio() {
               <div className="portrait reveal">
                 <div className="portrait-photo">
                   <Image
-                    src="/afnan-dp.jpg"
-                    alt="Afnan Mehmood"
-                    width={3024}
-                    height={3751}
+                    src="/afnan-avatar-v2.webp"
+                    alt="Afnan’s personal avatar"
+                    width={1000}
+                    height={1241}
                     sizes="(max-width: 767px) 230px, 320px"
                   />
                 </div>

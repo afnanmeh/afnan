@@ -1,0 +1,9 @@
+{
+  "mode": "built-in imagegen",
+  "source": "public/afnan-dp.jpg",
+  "asset": "public/afnan-avatar-v2.webp",
+  "master": "public/afnan-avatar-v2.png",
+  "rendering": "Photo-derived portrait on a subdivided 3D relief with facial and shoulder depth; limited tilt, idle motion and greeting nod. Not a fully rigged head or a 360-degree model.",
+  "usage": "Persistent interactive avatar across all seven page chapters and the About portrait.",
+  "final_prompt": "Use case: style-transfer with identity preservation. Image 1 is the real person identity reference, Image 2 is the edit target. Transform Image 2 into a CLEARLY CARTOON 3D CHARACTER avatar, much more stylized than the current photographic look. It must still obviously be the same man from Image 1. Keep exact short close-cropped hairline and low fade, thick eyebrows, almond eyes, straight nose, full lips, neatly close trimmed beard and moustache and oval softly squared face shape. Change materials to smooth softly sculpted clay-like animated movie skin, sculpted stylized grouped hair strands, soft simplified beard texture, slightly enlarge head relative to shoulders by 15%, simplify gray sweatshirt to clean soft fabric without photographic distressing. Adult proportions and likeness: NOT huge round eyes or bulbous nose or giant beard. Friendly calm confident closed mouth expression with a very slight smile. Clean polished high-end 3D animated film portrait. Waist-up, centered, frontal, no props, no hands, no text, full head and torso inside image. Transparent background. Match photo's identity above all, but unmistakably rendered cartoon rather than photo."
+}

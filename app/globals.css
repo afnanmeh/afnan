@@ -3242,3 +3242,6 @@ dialog {
     display: none;
   }
 }
+
+.portrait-photo:has(img[src*="afnan-avatar"]) { background: transparent; }
+.portrait-photo img[src*="afnan-avatar"] { object-fit: contain; filter: none; }
