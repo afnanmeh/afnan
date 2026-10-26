@@ -1,0 +1,38 @@
+{
+  "mode": "built-in imagegen",
+  "source": "public/afnan-avatar-v2.png",
+  "original": "public/afnan-avatar-v2.webp",
+  "usage": "Hero and About portraits follow the selected theme. Rose retains the original gray sweatshirt.",
+  "variants": [
+    {
+      "theme": "green",
+      "color": "deep forest green #1f3d30",
+      "asset": "public/afnan-avatar-v2-green.webp",
+      "final_prompt": "Use case: identity-preserve. Edit target: the provided transparent portrait of Afnan. Change ONLY the gray crewneck sweatshirt's fabric color to deep forest green #1f3d30. Preserve the exact original face and all facial features, eyes, eyebrows, nose, lips, beard, hair, ears, skin tone, expression, neck, body silhouette, pose, framing, image dimensions, fabric texture, collar, seams, folds, and lighting. Do not redraw or beautify the face. Keep the same sweatshirt design, simply recolor its fabric to a richly dark deep forest green #1f3d30, preserving realistic shadows and highlights. Preserve the original transparent alpha background and exact placement. No new objects or text. Output one portrait, no collage."
+    },
+    {
+      "theme": "sky",
+      "color": "dark navy blue #20374d",
+      "asset": "public/afnan-avatar-v2-sky.webp",
+      "final_prompt": "Use case: identity-preserve. Edit target: the provided transparent portrait of Afnan. Change ONLY the gray crewneck sweatshirt's fabric color to dark navy blue #20374d. Preserve the exact original face and all facial features, eyes, eyebrows, nose, lips, beard, hair, ears, skin tone, expression, neck, body silhouette, pose, framing, image dimensions, fabric texture, collar, seams, folds, and lighting. Do not redraw or beautify the face. Keep the same sweatshirt design, simply recolor its fabric to a richly dark dark navy blue #20374d, preserving realistic shadows and highlights. Preserve the original transparent alpha background and exact placement. No new objects or text. Output one portrait, no collage."
+    },
+    {
+      "theme": "peach",
+      "color": "dark burnt rust brown #653b2e",
+      "asset": "public/afnan-avatar-v2-peach.webp",
+      "final_prompt": "Use case: identity-preserve. Edit target: the provided transparent portrait of Afnan. Change ONLY the gray crewneck sweatshirt's fabric color to dark burnt rust brown #653b2e. Preserve the exact original face and all facial features, eyes, eyebrows, nose, lips, beard, hair, ears, skin tone, expression, neck, body silhouette, pose, framing, image dimensions, fabric texture, collar, seams, folds, and lighting. Do not redraw or beautify the face. Keep the same sweatshirt design, simply recolor its fabric to a richly dark dark burnt rust brown #653b2e, preserving realistic shadows and highlights. Preserve the original transparent alpha background and exact placement. No new objects or text. Output one portrait, no collage."
+    },
+    {
+      "theme": "lilac",
+      "color": "deep dark purple #3e2859",
+      "asset": "public/afnan-avatar-v2-lilac.webp",
+      "final_prompt": "Use case: identity-preserve. Edit target: the provided transparent portrait of Afnan. Change ONLY the gray crewneck sweatshirt's fabric color to deep dark purple #3e2859. Preserve the exact original face and all facial features, eyes, eyebrows, nose, lips, beard, hair, ears, skin tone, expression, neck, body silhouette, pose, framing, image dimensions, fabric texture, collar, seams, folds, and lighting. Do not redraw or beautify the face. Keep the same sweatshirt design, simply recolor its fabric to a richly dark deep dark purple #3e2859, preserving realistic shadows and highlights. Preserve the original transparent alpha background and exact placement. No new objects or text. Output one portrait, no collage."
+    },
+    {
+      "theme": "sand",
+      "color": "dark olive brown #49432b",
+      "asset": "public/afnan-avatar-v2-sand.webp",
+      "final_prompt": "Use case: identity-preserve. Edit target: the provided transparent portrait of Afnan. Change ONLY the gray crewneck sweatshirt's fabric color to dark olive brown #49432b. Preserve the exact original face and all facial features, eyes, eyebrows, nose, lips, beard, hair, ears, skin tone, expression, neck, body silhouette, pose, framing, image dimensions, fabric texture, collar, seams, folds, and lighting. Do not redraw or beautify the face. Keep the same sweatshirt design, simply recolor its fabric to a richly dark dark olive brown #49432b, preserving realistic shadows and highlights. Preserve the original transparent alpha background and exact placement. No new objects or text. Output one portrait, no collage."
+    }
+  ]
+}

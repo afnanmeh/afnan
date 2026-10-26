@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Flip } from "gsap/Flip";
 import Lenis from "lenis";
 import type { World } from "./World";
 import { themes } from "./Themes";
@@ -12,11 +13,15 @@ import { DetailedInterface } from "./DetailedInterface";
 import { WorkStudy } from "./WorkStudy";
 import { WorkMorph } from "./WorkMorph";
 import { CursorMagnifier } from "./CursorMagnifier";
+import { ThemePortrait } from "./ThemePortrait";
+import { ThemePicker } from "./ThemePicker";
+import { LoaderComposition } from "./LoaderComposition";
+import { ProjectGlimpses } from "./ProjectGlimpses";
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(useGSAP, ScrollTrigger, Flip);
 const links = [
   { href: "#story", label: "The story" },
-  { href: "#work", label: "What I build" },
+  { href: "/projects", label: "Projects" },
   { href: "#about", label: "About me" },
   { href: "#contact", label: "Let’s talk" },
 ];
@@ -26,20 +31,20 @@ const practices = [
     title: "SaaS products and websites",
     kind: "Complexity, made clear",
     description:
-      "High-performance, scalable SaaS frontends. Interactive dashboards, live data, notifications, authentication, and application logic built around the people using them.",
-    tags: ["React", "Next.js", "Zustand", "REST APIs"],
+      "High-performance, scalable SaaS frontends. Interactive dashboards, charts, role-based workflows, and application logic built around the people using them.",
+    tags: ["React", "Next.js", "Zustand", "REST APIs", "ECharts", "Recharts"],
     detail:
-      "I bring structure to complex products: reusable components, predictable state, clear navigation, and responsive interfaces. From authentication to data management, every interaction should help a user move forward.",
+      "At ContentStudio I work with UX/UI designers to turn complex products into clear ones: reusable components, predictable state with Zustand, role-based workflows, and data visualization with ECharts, Chart.js, and Recharts. Every interaction should help a user move forward.",
   },
   {
     number: "02",
     title: "AI-powered tools",
     kind: "Useful intelligence. Thoughtful interfaces.",
     description:
-      "AI-powered tools and optimized web applications that turn complex capabilities into approachable, user-friendly experiences.",
-    tags: ["TypeScript", "API integration", "UI / UX", "Accessibility"],
+      "50+ AI-powered tools built and shipped on OpenAI APIs, turning complex capabilities into approachable, user-friendly experiences that drive organic growth.",
+    tags: ["OpenAI APIs", "TypeScript", "API integration", "UI / UX"],
     detail:
-      "Good tools make powerful technology feel approachable. My focus is on thoughtful interaction design, clear feedback, and frontends that connect reliably to the services behind them.",
+      "I’ve developed and deployed more than 50 AI-powered tools using OpenAI APIs, driving significant organic traffic growth. Good tools make powerful technology feel approachable: thoughtful interaction design, clear feedback, and frontends that connect reliably to the services behind them.",
   },
   {
     number: "03",
@@ -47,9 +52,9 @@ const practices = [
     kind: "From first impression to lasting impact",
     description:
       "Websites and applications that combine modern design, thoughtful structure, stylish visuals, and performance. Built for real users and real growth.",
-    tags: ["Next.js", "Vue", "Core Web Vitals", "Technical SEO"],
+    tags: ["Next.js", "Vue", "Tailwind CSS", "Technical SEO", "WCAG"],
     detail:
-      "I implement projects of any scale, from small portfolio sites to web and mobile applications. Responsive design, accessibility, technical SEO, and performance are part of the process from the beginning.",
+      "I’ve delivered multiple high-traffic websites that increased engagement and conversions. Responsive design, WCAG accessibility, technical on-page SEO with Next.js, performance, and smooth CI/CD deployment are part of the process from the beginning.",
   },
 ];
 
@@ -92,16 +97,44 @@ export function Portfolio() {
     menu = useRef<HTMLDialogElement>(null),
     details = useRef<HTMLDialogElement>(null);
   const [ready, setReady] = useState(false),
+    [assetsReady, setAssetsReady] = useState(false),
+    [minimumElapsed, setMinimumElapsed] = useState(false),
     [entered, setEntered] = useState(false),
     [fallback, setFallback] = useState(false);
   const [chapter, setChapter] = useState(0),
     [selected, setSelected] = useState(0),
-    [themeIndex, setThemeIndex] = useState(0);
+    [themeIndex, setThemeIndex] = useState(themes.findIndex((theme) => theme.id === "sand"));
   const reduced = useRef(false);
   const [reduceMotion, setReduceMotion] = useState(false);
   const progressTween = useRef<gsap.core.Tween | null>(null);
-  const barsTween = useRef<gsap.core.Tween | null>(null);
+  const loadingFill = useRef<HTMLSpanElement>(null);
   const loadingCount = useRef({ value: 0 });
+
+  useEffect(() => {
+    let cancelled = false;
+    const minimumTimer = window.setTimeout(() => {
+      if (!cancelled) setMinimumElapsed(true);
+    }, 1500);
+
+    const fonts = Promise.all([
+      document.fonts.load('400 16px "Story Sans"'),
+      document.fonts.load('italic 400 16px "Story Serif"'),
+    ]).then(() => document.fonts.ready);
+    // All portrait layers are eager, including the About section and every
+    // theme. Decode them now so later theme switches reuse prepared images.
+    const images = Array.from(root.current?.querySelectorAll<HTMLImageElement>("img") ?? []);
+    Promise.all([
+      fonts.catch(() => undefined),
+      ...images.map((image) => image.decode().catch(() => undefined)),
+    ]).then(() => {
+      if (!cancelled) setAssetsReady(true);
+    });
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(minimumTimer);
+    };
+  }, []);
 
   useEffect(() => {
     let cancelled = false,
@@ -169,79 +202,72 @@ export function Portfolio() {
 
   useGSAP(
     () => {
-      const quick = matchMedia("(prefers-reduced-motion: reduce)").matches;
       const count = loadingCount.current;
       count.value = 0;
+      gsap.set(".hero-portrait", { autoAlpha: 0 });
       progressTween.current = gsap.to(count, {
         value: 92,
-        duration: quick ? 0 : 1.25,
-        ease: "power2.out",
+        duration: 1.5,
+        ease: "none",
         onUpdate: () => {
           if (progress.current)
             progress.current.textContent = String(
               Math.round(count.value),
-            ).padStart(3, "0");
+            ).padStart(2, "0");
+          if (loadingFill.current)
+            loadingFill.current.style.transform = `scaleX(${count.value / 100})`;
         },
       });
-      barsTween.current = gsap.fromTo(
-        ".loader-bar",
-        { height: "8%" },
-        {
-          height: (i: number) => `${16 + (Math.sin(i * 1.4) + 1) * 16}%`,
-          duration: quick ? 0 : 1.3,
-          stagger: quick ? 0 : 0.018,
-          ease: "power3.out",
-        },
-      );
     },
     { scope: root },
   );
 
   useGSAP(
     () => {
-      if (!ready) return;
+      if (!ready || !assetsReady || !minimumElapsed) return;
       let stopped = false;
       let intro: gsap.core.Timeline | undefined;
       const reveal = () => {
         if (stopped) return;
         const quick = reduced.current;
         progressTween.current?.kill();
-        barsTween.current?.kill();
-        const tl = (intro = gsap.timeline({
-          onComplete: () => {
-            setEntered(true);
-          },
-        }));
+        const source = root.current?.querySelector(".loader-portrait")?.getBoundingClientRect();
+        const destination = root.current?.querySelector(".hero-portrait")?.getBoundingClientRect();
+        const flight = source && destination ? {
+          x: destination.left - source.left,
+          y: destination.top - source.top,
+          scaleX: destination.width / source.width,
+          scaleY: destination.height / source.height,
+        } : { x: 0, y: 0, scaleX: 1, scaleY: 1 };
+        const tl = (intro = gsap.timeline());
         tl.to(loadingCount.current, {
           value: 100,
-          duration: quick ? 0 : 0.25,
+          duration: quick ? 0 : 0.18,
           onUpdate: () => {
             if (progress.current)
               progress.current.textContent = String(
                 Math.round(loadingCount.current.value),
-              ).padStart(3, "0");
+              ).padStart(2, "0");
+            if (loadingFill.current)
+              loadingFill.current.style.transform = `scaleX(${loadingCount.current.value / 100})`;
           },
         })
-          .to(".loader-bar", {
-            height: "115%",
-            duration: quick ? 0 : 0.7,
-            stagger: quick ? 0 : 0.012,
-            ease: "power3.inOut",
-          })
           .to(
-            ".loader-content",
-            { opacity: 0, y: quick ? 0 : -24, duration: 0.25 },
+            ".loader-content, .loader-top",
+            { opacity: 0, y: quick ? 0 : -16, duration: quick ? 0 : 0.2 },
+          )
+          .to(
+            ".loader-portrait",
+            {
+              ...flight,
+              duration: quick ? 0 : 0.6,
+              ease: "power3.inOut",
+            },
             "<",
           )
-          .to(
-            loader.current,
-            {
-              yPercent: -100,
-              duration: quick ? 0.1 : 1.05,
-              ease: "power4.inOut",
-            },
-            quick ? ">" : "-=.1",
-          )
+          .to(".loader-surface", { opacity: 0, duration: quick ? 0 : 0.5 }, "<")
+          .set(".hero-portrait", { autoAlpha: 1 })
+          .to(loader.current, { autoAlpha: 0, duration: 0.1, onComplete: () => setEntered(true) })
           .from(
             ".hero-prelude > *, .hero-title, .hero-caption, .hero-bottom",
             {
@@ -254,23 +280,14 @@ export function Portfolio() {
             "-=.6",
           );
       };
-      const timer = gsap.delayedCall(0.5, () => {
-        // The hero's actual faces must settle before it becomes visible.
-        Promise.all([
-          document.fonts.load('400 16px "Story Sans"'),
-          document.fonts.load('italic 400 16px "Story Serif"'),
-        ])
-          .catch(() => undefined)
-          .then(() => document.fonts.ready)
-          .then(reveal);
-      });
+      const frame = requestAnimationFrame(reveal);
       return () => {
         stopped = true;
-        timer.kill();
+        cancelAnimationFrame(frame);
         intro?.kill();
       };
     },
-    { dependencies: [ready], scope: root, revertOnUpdate: true },
+    { dependencies: [ready, assetsReady, minimumElapsed], scope: root, revertOnUpdate: true },
   );
 
   useGSAP(
@@ -342,18 +359,105 @@ export function Portfolio() {
             work.dataset.horizontal = "true";
             const distance = () =>
               Math.max(0, track.scrollWidth - viewport.clientWidth);
-            horizontal = gsap.to(track, {
-              x: () => -distance(),
+            const card = track.querySelector<HTMLElement>(".practice-0")!;
+            const preview = card.querySelector<HTMLElement>(".project-glimpses")!;
+            const gallery = preview.querySelector<HTMLElement>(".bento-gallery")!;
+            const camera = preview.querySelector<HTMLElement>(".bento-camera")!;
+            const tiles = Array.from(gallery.querySelectorAll<HTMLElement>(".bento-tile"));
+            const currentProject = preview.querySelector<HTMLElement>(".bento-current")!;
+            const original = Array.from(card.children).filter((child) => child !== preview);
+            const playhead = { progress: 0 };
+            const clamp = gsap.utils.clamp(0, 1);
+            const ease = gsap.parseEase("power2.inOut");
+            let center = 0, extra = 0, total = 0, zoom = 0, hold = 0, fade = 0, scale = 1, column = 0, row = 0;
+            let cardZoom: gsap.core.Tween | undefined;
+            let bentoFlip: gsap.core.Timeline | undefined;
+            let flipContext: gsap.Context | undefined;
+            let currentTitle = "";
+            const leftWithinTrack = (node: HTMLElement) => {
+              let left = 0;
+              let element: HTMLElement | null = node;
+              while (element && element !== track) {
+                left += element.offsetLeft;
+                element = element.offsetParent as HTMLElement | null;
+              }
+              return left;
+            };
+            const measure = () => {
+              center = Math.max(0, Math.min(distance(), leftWithinTrack(card) + card.offsetWidth / 2 - viewport.clientWidth / 2));
+              zoom = viewport.clientHeight * 0.42;
+              hold = viewport.clientHeight * 0.48;
+              fade = viewport.clientHeight * 0.18;
+              extra = zoom * 2 + hold * 3 + fade * 2;
+              total = distance() + extra;
+              scale = Math.max(1, Math.min(viewport.clientWidth * 0.94 / card.offsetWidth, viewport.clientHeight * 0.8 / card.offsetHeight));
+              column = camera.clientWidth + 8;
+              row = (camera.clientHeight + 8) / 2;
+            };
+            gsap.set(track, { x: 0 });
+            gsap.set(card, { scale: 1, transformOrigin: "50% 50%", zIndex: 6 });
+            gsap.set(preview, { opacity: 0 });
+            gsap.set(original, { opacity: 1 });
+            const moveTrack = gsap.quickSetter(track, "x", "px");
+            const moveCameraX = gsap.quickSetter(camera, "x", "px");
+            const moveCameraY = gsap.quickSetter(camera, "y", "px");
+            const showPreview = gsap.quickSetter(preview, "opacity");
+            const showOriginal = gsap.quickSetter(original, "opacity");
+            const buildBento = () => {
+              const oldZoom = cardZoom?.progress() ?? 0;
+              cardZoom?.progress(0);
+              flipContext?.revert();
+              flipContext = gsap.context(() => {
+                gallery.classList.add("bento-gallery-expanded");
+                const finalState = Flip.getState(tiles);
+                gallery.classList.remove("bento-gallery-expanded");
+                bentoFlip = Flip.to(finalState, { simple: true, scale: true, paused: true, duration: 1, ease: "none" });
+                bentoFlip.progress(0.00001).progress(0);
+              }, root);
+              cardZoom?.progress(oldZoom);
+            };
+            const renderJourney = () => {
+              const travel = playhead.progress * total;
+              const local = travel - center;
+              const story = hold * 3 + fade * 2;
+              const expanded = local < 0 || local > extra ? 0 : local < zoom ? ease(clamp(local / zoom)) : local > zoom + story ? 1 - ease(clamp((local - zoom - story) / zoom)) : 1;
+              const opacity = clamp(expanded * 1.5);
+              const time = clamp((local - zoom) / story);
+              const reveal = ease(clamp((time - 0.12) / 0.2));
+              const restore = ease(clamp((time - 0.88) / 0.12));
+              const toReplug = ease(clamp((time - 0.42) / 0.13));
+              const toUsermaven = ease(clamp((time - 0.65) / 0.13));
+              moveTrack(-(local < 0 ? travel : local > extra ? travel - extra : center));
+              cardZoom?.progress(expanded);
+              showPreview(opacity);
+              showOriginal(1 - opacity);
+              bentoFlip?.progress(reveal * (1 - restore));
+              moveCameraX(-column * toReplug * (1 - restore));
+              moveCameraY(row * (-toReplug + 2 * toUsermaven) * (1 - restore));
+              const title = time < 0.25 || time > 0.94 ? "Three products. One perspective." : time < 0.49 ? "ContentStudio" : time < 0.72 ? "Replug" : "Usermaven";
+              if (title !== currentTitle) { currentProject.textContent = title; currentTitle = title; }
+            };
+            measure();
+            cardZoom = gsap.fromTo(card, { scale: 1 }, { scale: () => scale, duration: 1, paused: true, ease: "none" });
+            gsap.set(camera, { x: 0, y: 0 });
+            buildBento();
+            horizontal = gsap.to(playhead, {
+              progress: 1,
+              duration: 1,
               ease: "none",
+              onUpdate: renderJourney,
               scrollTrigger: {
+                id: "work-project-journey",
                 trigger: viewport,
                 start: "top top",
-                end: () => `+=${distance()}`,
+                end: () => `+=${distance() + extra}`,
                 pin: viewport,
                 pinType: "fixed",
                 scrub: 0.8,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
+                onRefreshInit: () => { measure(); cardZoom?.invalidate(); buildBento(); },
+                onRefresh: () => { measure(); renderJourney(); },
               },
             });
             // Move the scroll narrative to focused panels for keyboard navigation.
@@ -363,27 +467,19 @@ export function Portfolio() {
               );
               const trigger = horizontal?.scrollTrigger;
               if (panel && trigger && panel.matches(":focus-visible")) {
-                const panelX =
-                  panel.getBoundingClientRect().left -
-                  track.getBoundingClientRect().left;
+                const target = Math.max(0, Math.min(distance(), leftWithinTrack(panel) - viewport.clientWidth * 0.085));
                 viewport.scrollLeft = 0;
                 window.scrollTo({
-                  top:
-                    trigger.start +
-                    Math.max(
-                      0,
-                      Math.min(
-                        distance(),
-                        panelX - viewport.clientWidth * 0.085,
-                      ),
-                    ),
+                  top: trigger.start + target + (target > center ? extra : 0),
                   behavior: "instant",
                 });
               }
             };
             track.addEventListener("focusin", focusPanel);
-            removeFocus = () =>
+            removeFocus = () => {
               track.removeEventListener("focusin", focusPanel);
+              flipContext?.revert();
+            };
           }
           const sections = gsap.utils.toArray<HTMLElement>("main > section");
           sections.forEach((el, i) =>
@@ -494,10 +590,10 @@ export function Portfolio() {
     setSelected(index);
     details.current?.showModal();
   };
-  const reimagine = () => {
-    const next = (themeIndex + 1) % themes.length;
-    world.current?.reimagine(themes[next].id);
-    setThemeIndex(next);
+  const selectTheme = (index: number) => {
+    if (index === themeIndex) return;
+    world.current?.reimagine(themes[index].id);
+    setThemeIndex(index);
   };
 
   return (
@@ -536,26 +632,28 @@ export function Portfolio() {
         )}
       </div>
       <div ref={loader} className="loader" aria-hidden="true">
-        <div className="loader-content">
-          <span className="loader-note">
-            A LITTLE CODE. A LITTLE CURIOSITY.
-          </span>
-          <span className="loader-logo">
-            afnan<span>.</span>
-          </span>
-          <div className="loader-status">
-            <span>Building an experience</span>
-            <span ref={progress}>000</span>
-          </div>
+        <LoaderComposition />
+        <div className="loader-top">
+          <span className="loader-logo">afnan<span>.</span></span>
+          <span className="loader-note">FRONTEND ENGINEER<br />DESIGNER & CURIOUS HUMAN</span>
         </div>
-        <div className="loader-bars">
-          {Array.from({ length: 24 }, (_, i) => (
-            <span className="loader-bar" key={i} />
-          ))}
+        <div className="loader-content">
+          <span className="loader-invitation">A DIFFERENT KIND OF PORTFOLIO</span>
+          <p className="loader-heading">From logic<br />to <i>feeling.</i></p>
+          <p className="loader-caption">A little logic. A lot of possibility.</p>
+          <div className="loader-footer">
+            <div className="loader-status">
+              <span className="loader-status-label">Shaping the experience</span>
+              <span className="loader-percentage"><span ref={progress}>00</span><span>%</span></span>
+            </div>
+            <div className="loader-progress">
+              <span ref={loadingFill} />
+            </div>
+          </div>
         </div>
       </div>
       <noscript>
-        <style>{`.loader{display:none!important}.world{display:none}.portfolio{background:#ead4e1}.work,.contact{background:#050506}`}</style>
+        <style>{`.loader{display:none!important}.world{display:none}.portfolio{background:#e5dcc2}.work,.contact{background:#050506}`}</style>
       </noscript>
       <header className="site-header">
         <a href="#home" className="wordmark" aria-label="Afnan Mehmood, home">
@@ -563,7 +661,9 @@ export function Portfolio() {
         </a>
         <span className="header-role">ENGINEERING × DESIGN</span>
         <nav className="desktop-nav" aria-label="Main navigation">
-          {links.map((l) => (
+          {links.map((l) => l.href === "/projects" ? (
+            <Link key={l.href} href={l.href}>{l.label}</Link>
+          ) : (
             <a key={l.href} href={l.href}>
               {l.label}
               {l.href === "#contact" && <Arrow />}
@@ -610,6 +710,7 @@ export function Portfolio() {
             </svg>
           </a>
         </div>
+        <ThemePicker themeIndex={themeIndex} onSelect={selectTheme} />
         <button
           className="menu-button glass"
           onClick={() => menu.current?.showModal()}
@@ -633,11 +734,9 @@ export function Portfolio() {
               </h1>
             </div>
             <div className="hero-portrait">
-              <Image
-                src="/afnan-avatar-v2.webp"
+              <ThemePortrait
+                themeIndex={themeIndex}
                 alt="Afnan Mehmood’s avatar"
-                width={1000}
-                height={1241}
                 sizes="(max-width: 767px) 250px, (max-width: 1100px) 390px, 485px"
                 priority
               />
@@ -715,6 +814,7 @@ export function Portfolio() {
                 <span>Next.js</span>
                 <span>Vue</span>
                 <span>TypeScript</span>
+                <span>Tailwind CSS</span>
               </div>
             </div>
             <div className="scene-label reveal">
@@ -785,26 +885,27 @@ export function Portfolio() {
                 </p>
               </div>
               <div className="practice-list">
-                {practices.map((p, i) => (
-                  <button
-                    key={p.number}
-                    className={`practice practice-${i} reveal`}
-                    onClick={() => openPractice(i)}
-                  >
+                {practices.map((p, i) => {
+                  const content = <>
                     <span className="practice-number">{p.number}</span>
                     <span>
                       <span className="practice-kind">{p.kind}</span>
                       <span className="practice-title">{p.title}</span>
                       <span className="practice-link">
-                        Explore the practice <Arrow />
+                        {i === 1 ? "Explore the practice" : "View the projects"} <Arrow />
                       </span>
                     </span>
                     <WorkStudy variant={i} />
                     <span className="practice-star">
                       <Star />
                     </span>
-                  </button>
-                ))}
+                  </>;
+                  return i === 1 ? (
+                    <button key={p.number} className={`practice practice-${i} reveal`} onClick={() => openPractice(i)}>{content}</button>
+                  ) : (
+                    <Link key={p.number} href="/projects" className={`practice practice-${i} reveal`}>{content}{i === 0 && <ProjectGlimpses />}</Link>
+                  );
+                })}
               </div>
             </div>
             <span className="work-footnote">
@@ -823,11 +924,9 @@ export function Portfolio() {
             <div className="about-content">
               <div className="portrait reveal">
                 <div className="portrait-photo">
-                  <Image
-                    src="/afnan-avatar-v2.webp"
+                  <ThemePortrait
+                    themeIndex={themeIndex}
                     alt="Afnan’s personal avatar"
-                    width={1000}
-                    height={1241}
                     sizes="(max-width: 767px) 230px, 320px"
                   />
                 </div>
@@ -837,11 +936,12 @@ export function Portfolio() {
               </div>
               <div className="about-copy">
                 <p className="body-copy reveal">
-                  As a passionate Frontend Engineer, I build high-performance,
-                  scalable SaaS frontends with React, Next.js, and Vue,
-                  delivering AI-powered tools, interactive dashboards, and
-                  optimized web applications that drive user engagement and
-                  measurable growth.
+                  Since 2021 I’ve been a Software Developer at D4 Interactive,
+                  building ContentStudio: high-performance, scalable SaaS
+                  frontends with React, Next.js, and Vue, 50+ AI-powered tools
+                  on OpenAI APIs, interactive dashboards, and optimized web
+                  applications that drive user engagement and measurable
+                  growth.
                 </p>
                 <p className="body-copy reveal">
                   From small portfolio sites to web and mobile applications, my
@@ -859,15 +959,27 @@ export function Portfolio() {
                 <p>
                   JavaScript ES6+ · TypeScript · React · Next.js · Vue
                   <br />
-                  Tailwind CSS · Responsive design · WCAG
+                  Tailwind CSS · Mantine UI · UI/UX · Responsive design · WCAG
                 </p>
               </div>
               <div>
                 <span>UNDER THE SURFACE</span>
                 <p>
-                  Zustand · REST APIs · Data management · API design
+                  Zustand · REST APIs · OpenAI APIs · MongoDB · Strapi
                   <br />
-                  Core Web Vitals · SEO · Analytics · Git · Docker · CI/CD
+                  ECharts · Chart.js · Recharts · Python · C++
+                  <br />
+                  Technical SEO · Core Web Vitals · Git · Docker · CI/CD
+                </p>
+              </div>
+              <div>
+                <span>THE PATH</span>
+                <p>
+                  Software Developer · D4 Interactive (ContentStudio)
+                  <br />
+                  Nov 2021 – present · Rawalpindi
+                  <br />
+                  BS Computer Science · IIU Islamabad · 2018–2022 · CGPA 3.60
                 </p>
               </div>
             </div>
@@ -965,15 +1077,6 @@ export function Portfolio() {
         </div>
         <span>07</span>
       </div>
-      <button
-        className="reimagine glass"
-        onClick={reimagine}
-        aria-label={`Reimagine the feeling. Next theme: ${themes[(themeIndex + 1) % themes.length].name}`}
-        title={`Next theme: ${themes[(themeIndex + 1) % themes.length].name}`}
-      >
-        <Star />
-        <span>Reimagine the feeling</span>
-      </button>
       <CursorMagnifier />
       <div className="cursor" aria-hidden="true">
         <Star />
@@ -998,7 +1101,9 @@ export function Portfolio() {
           </button>
         </div>
         <nav aria-label="Mobile navigation">
-          {links.map((l, i) => (
+          {links.map((l, i) => l.href === "/projects" ? (
+            <Link key={l.href} href={l.href} onClick={() => menu.current?.close()}><span>0{i + 1}</span>{l.label}<Arrow /></Link>
+          ) : (
             <a key={l.href} href={l.href} onClick={() => menu.current?.close()}>
               <span>0{i + 1}</span>
               {l.label}

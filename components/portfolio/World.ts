@@ -171,7 +171,7 @@ export function createWorld(
     renderer.render(scene, camera);
   };
   const tick = (time: number) => {
-    if (dead || !visible || (constrained && time - last < 1 / 30)) return;
+    if (dead || !visible || root.dataset.entered !== "true" || (constrained && time - last < 1 / 30)) return;
     last = time;
     render();
   };
@@ -430,6 +430,7 @@ export function createWorld(
           repeat: 1,
           yoyo: true,
           ease: "sine.inOut",
+          overwrite: "auto",
         });
     },
     dispose: () => {

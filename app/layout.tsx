@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 export const metadata: Metadata = {
   title: "Afnan Mehmood | Frontend Engineer & Designer",
   description:
-    "Code, craft, and a little curiosity. Afnan Mehmood builds thoughtful digital experiences with React, Next.js, Vue, and TypeScript. Frontend engineering, UI/UX, and design.",
+    "Code, craft, and a little curiosity. Afnan Mehmood builds thoughtful digital experiences with React, Next.js, Vue, and TypeScript: SaaS frontends, AI-powered tools, and dashboards at ContentStudio. Frontend engineering, UI/UX, and design.",
   icons: { icon: "/favicon.svg" },
   openGraph: {
     title: "Afnan Mehmood | From code to experience",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#ead4e1",
+  themeColor: "#e5dcc2",
 };
 export default function RootLayout({
   children,
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="sand">
       <head>
         <link
           rel="preload"

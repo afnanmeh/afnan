@@ -1,0 +1,17 @@
+{
+  "reviewed": "2026-10-23",
+  "contribution_scope": {
+    "contentstudio": ["website", "web application"],
+    "replug": ["website", "web application"],
+    "usermaven": ["website"]
+  },
+  "scope_source": "User confirmation in this conversation. Product capabilities are described separately from personal contribution claims.",
+  "content_sources": "Canonical official product and help-center links are recorded alongside each feature in content/projects.ts and displayed on the projects page.",
+  "imagery": [
+    { "asset": "public/projects/contentstudio-website.webp", "source": "https://contentstudio.io/", "type": "Public website capture" },
+    { "asset": "public/projects/contentstudio-app.webp", "source": "https://contentstudio.io/images/products/publish-new/publish-hero.webp", "type": "Official publishing workspace illustration" },
+    { "asset": "public/projects/replug-website.webp", "source": "https://replug.io/videos/home/2026-10/replug-home-en.webp", "type": "Official product video preview" },
+    { "asset": "public/projects/replug-app.webp", "source": "https://docs.replug.io/articles/overview-of-analytics-942eee4c", "image_url": "https://assets.helpin.ai/docs-import/7d314f04-c5c7-4b51-a7d1-0d10dea0424b/0efb41e6-35b6-4736-a1cc-9c1742301e67-file-YlAVoLzTLO.png", "type": "Official help-center analytics illustration" },
+    { "asset": "public/projects/usermaven-website.webp", "source": "https://usermaven.com/", "type": "Public website capture" }
+  ]
+}

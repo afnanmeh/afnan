@@ -1,0 +1,39 @@
+{
+  "mode": "built-in imagegen",
+  "original": "public/afnan-avatar-v2.webp",
+  "width": 1000,
+  "height": 1241,
+  "finishing": "Normalized to the original canvas. Original alpha silhouette and top 500 rows retained exactly. Lossless WebP encoding.",
+  "variants": [
+    {
+      "id": "green",
+      "color": "soft light pastel mint green #bed9bf",
+      "prompt": "Use case: identity-preserve. Edit target: provided transparent portrait. Make one minimal localized edit: recolor ONLY the gray sweatshirt fabric to soft light pastel mint green #bed9bf. The shirt must be LIGHT and PASTEL, not dark or saturated. Preserve the original material texture, folds, seams, collar and realistic light/shadows. Absolutely lock all original geometry: same head, same face, facial features, hair, beard, expression, skin, neck, head position, shoulder silhouette, torso width, arm positions, lower crop, image composition and transparent margins. NO scale, rotation, translation, crop, zoom, pose or anatomy changes. Facial and skin pixels should remain unchanged. Keep original transparent background. One portrait only.",
+      "asset": "public/afnan-avatar-v2-green-pastel.webp"
+    },
+    {
+      "id": "sky",
+      "color": "soft light pastel sky blue #bfd8eb",
+      "prompt": "Use case: identity-preserve. Edit target: provided transparent portrait. Make one minimal localized edit: recolor ONLY the gray sweatshirt fabric to soft light pastel sky blue #bfd8eb. The shirt must be LIGHT and PASTEL, not dark or saturated. Preserve the original material texture, folds, seams, collar and realistic light/shadows. Absolutely lock all original geometry: same head, same face, facial features, hair, beard, expression, skin, neck, head position, shoulder silhouette, torso width, arm positions, lower crop, image composition and transparent margins. NO scale, rotation, translation, crop, zoom, pose or anatomy changes. Facial and skin pixels should remain unchanged. Keep original transparent background. One portrait only.",
+      "asset": "public/afnan-avatar-v2-sky-pastel.webp"
+    },
+    {
+      "id": "peach",
+      "color": "soft light pastel peach #edc3af",
+      "prompt": "Use case: identity-preserve. Edit target: provided transparent portrait. Make one minimal localized edit: recolor ONLY the gray sweatshirt fabric to soft light pastel peach #edc3af. The shirt must be LIGHT and PASTEL, not dark or saturated. Preserve the original material texture, folds, seams, collar and realistic light/shadows. Absolutely lock all original geometry: same head, same face, facial features, hair, beard, expression, skin, neck, head position, shoulder silhouette, torso width, arm positions, lower crop, image composition and transparent margins. NO scale, rotation, translation, crop, zoom, pose or anatomy changes. Facial and skin pixels should remain unchanged. Keep original transparent background. One portrait only.",
+      "asset": "public/afnan-avatar-v2-peach-pastel.webp"
+    },
+    {
+      "id": "lilac",
+      "color": "soft light pastel lilac lavender #d1bee5",
+      "prompt": "Use case: identity-preserve. Edit target: provided transparent portrait. Make one minimal localized edit: recolor ONLY the gray sweatshirt fabric to soft light pastel lilac lavender #d1bee5. The shirt must be LIGHT and PASTEL, not dark or saturated. Preserve the original material texture, folds, seams, collar and realistic light/shadows. Absolutely lock all original geometry: same head, same face, facial features, hair, beard, expression, skin, neck, head position, shoulder silhouette, torso width, arm positions, lower crop, image composition and transparent margins. NO scale, rotation, translation, crop, zoom, pose or anatomy changes. Facial and skin pixels should remain unchanged. Keep original transparent background. One portrait only.",
+      "asset": "public/afnan-avatar-v2-lilac-pastel.webp"
+    },
+    {
+      "id": "sand",
+      "color": "soft light pastel warm sand cream #e3d5b5",
+      "prompt": "Use case: identity-preserve. Edit target: provided transparent portrait. Make one minimal localized edit: recolor ONLY the gray sweatshirt fabric to soft light pastel warm sand cream #e3d5b5. The shirt must be LIGHT and PASTEL, not dark or saturated. Preserve the original material texture, folds, seams, collar and realistic light/shadows. Absolutely lock all original geometry: same head, same face, facial features, hair, beard, expression, skin, neck, head position, shoulder silhouette, torso width, arm positions, lower crop, image composition and transparent margins. NO scale, rotation, translation, crop, zoom, pose or anatomy changes. Facial and skin pixels should remain unchanged. Keep original transparent background. One portrait only.",
+      "asset": "public/afnan-avatar-v2-sand-pastel.webp"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ export const themes = [
   {
     id: "pink",
     name: "Rose",
+    avatar: "/afnan-avatar-v2-rose-pastel.webp",
     top: "#f2e4eb",
     bottom: "#d9c4d8",
     ink: "#29345a",
@@ -13,6 +14,7 @@ export const themes = [
   {
     id: "green",
     name: "Parrot",
+    avatar: "/afnan-avatar-v2-green-pastel.webp",
     top: "#f1f7db",
     bottom: "#d1e5b5",
     ink: "#294735",
@@ -24,6 +26,7 @@ export const themes = [
   {
     id: "sky",
     name: "Sky",
+    avatar: "/afnan-avatar-v2-sky-pastel.webp",
     top: "#eff6fa",
     bottom: "#c7dde9",
     ink: "#294657",
@@ -35,6 +38,7 @@ export const themes = [
   {
     id: "peach",
     name: "Peach",
+    avatar: "/afnan-avatar-v2-peach-pastel.webp",
     top: "#fff2e8",
     bottom: "#eed4c3",
     ink: "#594336",
@@ -46,6 +50,7 @@ export const themes = [
   {
     id: "lilac",
     name: "Lilac",
+    avatar: "/afnan-avatar-v2-lilac-pastel.webp",
     top: "#f4effb",
     bottom: "#d9cceb",
     ink: "#433456",
@@ -57,13 +62,26 @@ export const themes = [
   {
     id: "sand",
     name: "Sand",
+    avatar: "/afnan-avatar-v2-sand-pastel.webp",
     top: "#faf5e7",
     bottom: "#e5dcc2",
-    ink: "#4b4531",
-    accent: "#9a8958",
+    ink: "#211d14",
+    accent: "#57451f",
     ribbon: "#bca878",
-    copy: "#777052",
+    copy: "#332d20",
     panel: "#e7dec5",
+  },
+  {
+    id: "black",
+    name: "Black",
+    avatar: "/afnan-avatar-v2.webp",
+    top: "#111016",
+    bottom: "#050506",
+    ink: "#eee9f5",
+    accent: "#c4acd9",
+    ribbon: "#8f7ba4",
+    copy: "#c5bed0",
+    panel: "#211c29",
   },
 ] as const;
 export type ThemeId = (typeof themes)[number]["id"];

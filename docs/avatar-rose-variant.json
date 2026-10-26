@@ -1,0 +1,15 @@
+{
+  "mode": "built-in imagegen",
+  "original": "public/afnan-avatar-v2.webp",
+  "width": 1000,
+  "height": 1241,
+  "finishing": "Normalized to the original canvas. Original alpha silhouette and top 500 rows retained exactly. Lossless WebP encoding.",
+  "variants": [
+    {
+      "id": "rose",
+      "color": "soft light pastel dusty rose pink #e5b7c8",
+      "prompt": "Use case: identity-preserve. Edit target: provided transparent portrait. Make one minimal localized edit: recolor ONLY the gray sweatshirt fabric to soft light pastel dusty rose pink #e5b7c8. The shirt must be LIGHT and PASTEL, not gray, dark or saturated. Preserve original fabric texture, folds, seams, collar and realistic light/shadows. Absolutely lock original geometry: same head, exact facial features, hair, beard, expression, skin, neck, head position, shoulder silhouette, torso width, arm positions, lower crop, image composition and transparent margins. NO scale, rotation, translation, crop, zoom, pose or anatomy changes. Facial and skin pixels should remain unchanged. Keep transparent background. One portrait only.",
+      "asset": "public/afnan-avatar-v2-rose-pastel.webp"
+    }
+  ]
+}
